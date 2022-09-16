@@ -1,26 +1,8 @@
 <?php
-    function ls_command(): bool|string
-    {
-        return exec('ls');
-    }
-    function ps_command(): bool|string
-    {
-        return exec('ps -e');
-    }
-    function whoami_command(): bool|string
-    {
-        return exec('whoami');
-    }
-    function id_command(): bool|string
-    {
-        return exec('id');
-    }
-    function pwd_command(): bool|string
-    {
-        return exec('pwd');
-    }
-    function date_command(): bool|string
-    {
-        return exec('date');
+    function run_command($command){
+        $result = array();
+        exec($command, $result);
+        echo "<pre>" .$command. ": </pre>";
+        echo "<pre>" .implode("\n", $result) . "</pre>";
     }
 ?>

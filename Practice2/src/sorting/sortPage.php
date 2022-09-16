@@ -3,8 +3,8 @@
     if (isset($_GET['numbers'])){
         $array = array_filter(explode(',', $_GET['numbers']), 'is_numeric');
         $sorted_array = merge_sort($array);
-        foreach ($sorted_array as $item){
-            printf("%d ",$item);
-        }
+        echo "<pre> [";
+        echo implode(", ", $sorted_array);
+        echo "] </pre>";
     }
 ?>
