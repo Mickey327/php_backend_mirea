@@ -4,3 +4,7 @@ Order deny,allow
 Deny from all
 Allow from env=PASS
 </FilesMatch>
+<Files signIn.php>
+    Order Allow,Deny
+    Allow from all
+</Files>
