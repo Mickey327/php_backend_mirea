@@ -9,4 +9,14 @@ CREATE TABLE IF NOT EXISTS users(
     password VARCHAR(100) NOT NULL,
     role VARCHAR(10) NOT NULL
 );
+CREATE TABLE IF NOT EXISTS forecasts(
+    id int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    weather VARCHAR(100) NOT NULL,
+    temp int NOT NULL,
+    min_temp int NOT NULL,
+    max_temp int NOT NULL,
+    pressure int NOT NULL,
+    wind_speed int NOT NULL,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 INSERT INTO users(name, password, role) VALUES ('Pavel', 'aboba', 'admin'), ('Ivan', 'aboba2', 'user');

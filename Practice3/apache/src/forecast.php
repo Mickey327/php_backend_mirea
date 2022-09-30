@@ -6,6 +6,7 @@
 </head>
 <body>
 <?php
+    include_once 'mysqlConnect.php';
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, "https://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=YOUR_API_KEY");
     curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
@@ -22,6 +23,15 @@
     $max_temp = $response['main']['temp_max'];
     $pressure = $response['main']['pressure'];
     $wind_speed = $response['wind']['speed'];
+    $mysqli = connectDB();
+    if ($mysqli->connect_error){
+        die("Can't connect to db");
+    }
+    $stmt = $mysqli->prepare("INSERT INTO forecasts(weather, temp, min_temp, max_temp, pressure, wind_speed) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt -> bind_param("sddddd", $weather_type, $temp, $min_temp, $max_temp, $pressure, $wind_speed);
+    $stmt -> execute();
+    $stmt -> close();
+    $mysqli -> close();
     echo "<h1>Forecast in Moscow Now:</h1>
     <p>Weather: <span>$weather_type</span></p>
     <p>Temp: <span>$temp °C</span></p>
