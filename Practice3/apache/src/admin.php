@@ -18,7 +18,7 @@
                 display: flex;
                 flex-direction: row;
             ">
-                <span>{$user['id']}</span><span>{$user['name']}</span><span>{$user['password']}</span><span>{$user['role']}</span>
+                <span>{$user['id']}</span><span>{$user['name']}</span><span>{$user['password']}</span>
             </div>
         A; } ?></div>
 <?php $mysqli->close(); ?>

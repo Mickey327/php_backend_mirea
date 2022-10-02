@@ -1,10 +1,5 @@
 <FilesMatch "\.php$">
-SetEnvIf Cookie auth=.* PASS=1
-Order deny,allow
-Deny from all
-Allow from env=PASS
+    AuthName "Login required"
+    AuthType Basic
+    Require valid-user
 </FilesMatch>
-<Files signIn.php>
-    Order Allow,Deny
-    Allow from all
-</Files>
