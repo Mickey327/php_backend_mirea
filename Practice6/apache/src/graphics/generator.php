@@ -3,7 +3,7 @@ require_once '../../jpgraph/jpgraph.php';
 require_once '../../jpgraph/jpgraph_line.php';
 require_once '../../jpgraph/jpgraph_bar.php';
 require_once '../../jpgraph/jpgraph_pie.php';
-const width = 640, height = 360;
+const width = 800, height = 600;
 if (isset($_GET['number']) && is_numeric($_GET['number'])){
     try {
         addWatermark(createGraphImage(), createWatermarkStamp($_GET['number']));
@@ -23,7 +23,7 @@ function plotType(int $type, $data) {
 /**
  * @throws Exception
  */
-function createGraphImage(): GdImage | bool | null{
+function createGraphImage($type, $data): GdImage | bool | null{
     if (isset($_GET['type'])){
         $type = $_GET['type'];
     }
@@ -67,8 +67,8 @@ function addWatermark(GdImage $image, GdImage $stamp) {
     $stampHeight = imagesy($stamp);
     imagecopy(
         $image, $stamp,
-        imagesx($image) - $stampWidth - 250,
-        imagesy($image) - $stampHeight - 200,
+        imagesx($image) - $stampWidth - 360,
+        imagesy($image) - $stampHeight - 330,
         0, 0,
         $stampWidth, $stampHeight
     );

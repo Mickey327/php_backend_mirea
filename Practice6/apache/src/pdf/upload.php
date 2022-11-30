@@ -12,9 +12,8 @@ if ($_FILES["userfile"]["size"] > 2000000) {
     $uploadOk = 0;
     echo "Файл слишком большой.";
 }
-//$handle = fopen($target_file, "rb");
-//&& fread($handle, 4) != "%pdf-"
-if ($fileType != "pdf"){ //&&
+
+if ($fileType != "pdf"){
     $uploadOk = 0;
     echo "Только pdf файлы доступны к загрузке\n";
 }
